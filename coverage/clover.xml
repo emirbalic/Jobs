@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1663201525189" clover="3.2.0">
-  <project timestamp="1663201525190" name="All files">
-    <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2" elements="8" coveredelements="8" complexity="0" loc="4" ncloc="4" packages="1" files="1" classes="1"/>
-    <file name="playground.js" path="/Users/emirbalic/Documents/VueJS/Boris/job-search/src/playground.js">
-      <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
-      <line num="1" count="1" type="stmt"/>
-      <line num="3" count="2" type="cond" truecount="2" falsecount="0"/>
-      <line num="4" count="1" type="stmt"/>
-      <line num="6" count="1" type="stmt"/>
+<coverage generated="1663232861254" clover="3.2.0">
+  <project timestamp="1663232861254" name="All files">
+    <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1" elements="3" coveredelements="3" complexity="0" loc="2" ncloc="2" packages="1" files="1" classes="1"/>
+    <file name="MainNav.vue" path="/Users/emirbalic/Documents/VueJS/Boris/job-search/src/components/MainNav.vue">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="12" count="1" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>
