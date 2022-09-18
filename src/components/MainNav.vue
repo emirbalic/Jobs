@@ -13,19 +13,44 @@
              ><a href="#" class="flex items-center h-full py-2 5">{{menuItem}}</a></li>
           </ul>
         </nav>
+        <div class="flex items-center h-full ml-auto">
+          <profile-image v-if="isLoggedIn" data-test='profile-image' />
+          <action-button 
+            v-else 
+            text="Sign in"
+            data-test='login-button' 
+            @click="loginUser" />
+          </div>
+          <!-- type="primary" -->
       </div>
+      <sub-nav v-if="isLoggedIn" data-test="subnav"/>
     </div>
   </header>
 </template>
 
 <script>
+  import ActionButton from "@/components/ActionButton.vue";
+  import ProfileImage from "@/components/ProfileImage.vue";
+  import SubNav from "@/components/SubNav.vue";
+
 export default {
   name: "MainNav",
+  components: {
+    ActionButton,
+    ProfileImage,
+    SubNav
+  },
   data() {
     return {
       company:'Kuka Alenami',
       url: 'https://careers.google.com',
-      menuItems: ['Teams', 'Locations', 'Life at MDB', 'How we hire', 'Students', 'Jobs']
+      menuItems: ['Teams', 'Locations', 'Life at MDB', 'How we hire', 'Students', 'Jobs'],
+      isLoggedIn: false,
+    }
+  },
+  methods: {
+    loginUser() {
+      this.isLoggedIn = !this.isLoggedIn;
     }
   }
 };
