@@ -10,6 +10,7 @@
       border-solid 
       border-brand-gray-3
       rounded-3xl"
+      @submit.prevent = "searchForJobs"
     >
     <font-awesome-icon :icon="['fas', 'search']" class="ml-4 mr-3"/> 
 
@@ -19,9 +20,9 @@
         <text-input 
           v-model="role"
           placeholder="Software Engineer" 
+          data-test="role-input"
           />
-          <!-- :value="role"
-          @handle-input="updateRole" -->
+
       </div>
       <span 
         class="
@@ -37,9 +38,9 @@
         <label for="" class="absolute left-0 -top-10">Where?</label>
         <text-input 
           v-model="location"
-          placeholder="Los Angeles" 
+          placeholder="Los Angeles"
+          data-test="location-input" 
         />
-        <!-- <text-input placeholder="Los Angeles" @handle-input="location = $event" /> -->
 
       </div>
     </div>
@@ -47,6 +48,7 @@
       text="Search" 
       type="secondary"
       class="rounded-r-3xl"
+      data-test="form-submit-button"
       />
     </form>
 </template>
@@ -67,12 +69,15 @@
       }
     },
     methods: {
-      updateRole(payload){
-        this.role = payload;
+      searchForJobs() {
+        this.$router.push({
+          name:'job-results',
+          query: {
+            role: this.role,
+            location: this.location
+          }
+        });
       },
-      updateLocation(payload){
-        this.location = payload;
-      }
-    }
+    },
   }
 </script>
