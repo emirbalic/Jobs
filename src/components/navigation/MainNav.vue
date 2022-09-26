@@ -36,7 +36,6 @@
 						@click="LOGIN_USER()"
 					/>
 				</div>
-				<!-- type="primary" -->
 			</div>
 			<sub-nav v-if="isLoggedIn" data-test="subnav" />
 		</div>
@@ -62,14 +61,13 @@ export default {
 	data() {
 		return {
 			menuItems: [
-				{ text: "Teams", url: "/" },
+				{ text: "Teams", url: "/teams" },
 				{ text: "Locations", url: "/" },
 				{ text: "Life at MDB", url: "/" },
 				{ text: "How we hire", url: "/" },
 				{ text: "Students", url: "/" },
 				{ text: "Jobs", url: "/jobs/results" },
 			],
-			// isLoggedIn: false,
 		};
 	},
 	computed: {
@@ -79,24 +77,12 @@ export default {
 				"h-32": this.isLoggedIn,
 			};
 		},
-		// isLoggedIn() {
-		// 	return this.$store.state.isLoggedIn;
-		// },
-		// ...mapState({
-		// 	// isLoggedIn: (state) => state.isLoggedIn,
-		//   isLoggedIn: 'isLoggedIn'
-		// }),
 		...mapState(["isLoggedIn"]),
 	},
 	methods: {
-		// LOGIN_USER() {
-		// 	this.$store.commit(LOGIN_USER);
-		// },
 		...mapMutations([LOGIN_USER]),
 	},
 };
 </script>
 
-<!-- <style scoped>
 
-</style> -->

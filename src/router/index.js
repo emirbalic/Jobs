@@ -1,19 +1,13 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-// import HomeView from '@/views/HomeView.vue'
-// import JobResultsView from '@/views/JobResultsView.vue';
-// import JobView from '@/views/JobView.vue';
 
 const HomeView = () =>  import ('@/views/HomeView.vue');
 const JobResultsView = () =>  import /* webpackChunkName: 'jobs' */ ('@/views/JobResultsView.vue');
 const JobView = () =>  import /* webpackChunkName: 'jobs' */ ('@/views/JobView.vue');
+const TeamsView = () => import("@/views/TeamsView.vue");
 
 
-// const HomeView = () => import("@/views/HomeView.vue");
-// const JobResultsView = () =>
-//   import(/* webpackChunkName: "jobs" */ "@/views/JobResultsView.vue");
-// const JobView = () =>
-//   import(/* webpackChunkName: "jobs" */ "@/views/JobView.vue");
+
 
 const routes = [
   {
@@ -30,7 +24,12 @@ const routes = [
     path: '/jobs/results/:id',
     name: 'job-listing',
     component: JobView,
-  }
+  },
+  {
+    path: "/teams",
+    name: "Teams",
+    component: TeamsView,
+  },
 ]
 
 const router = createRouter({

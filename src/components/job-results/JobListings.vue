@@ -35,44 +35,45 @@
 </template>
 
 <script>
-import axios from "axios";
-import JobListing from "./JobListing.vue";
+import { mapActions, mapState } from "vuex";//
+
+import { FETCH_JOBS } from "@/store";
+import JobListing from '@/components/job-results/JobListing.vue'
+
 export default {
-	name: "JobListings",
-	components: {
-		JobListing,
-	},
-	data() {
-		return {
-			jobs: [],
-		};
-	},
-	computed: {
-		currentPage() {
-			const pageString = this.$route.query.page || "1";
-			return Number.parseInt(pageString);
-		},
-		previousPage() {
-			const previousPage = this.currentPage - 1;
-			const firstPage = 1;
-			return previousPage >= firstPage ? firstPage : undefined;
-		},
-		nextPage() {
-			const nextPage = this.currentPage + 1;
-			const maxPage = Math.ceil(this.jobs.length / 10);
-			return nextPage <= maxPage ? nextPage : undefined;
-		},
-		displayedJobs() {
-			const pageNumber = this.currentPage;
-			const firstJobIndex = (pageNumber - 1) * 10;
-			const lastJobIndex = pageNumber * 10;
-			return this.jobs.slice(firstJobIndex, lastJobIndex);
-		},
-	},
-	async mounted() {
-		const baseUrl = process.env.VUE_APP_API_URL;
-    const response = await axios.get(`${baseUrl}/jobs`);
-		this.jobs = response.data;
-	},
+  name: "JobListings",
+  components: {
+    JobListing,
+  },
+  computed: {
+    currentPage() {
+      const pageString = this.$route.query.page || "1";
+      return Number.parseInt(pageString);
+    },
+    previousPage() {
+      const previousPage = this.currentPage - 1;
+      const firstPage = 1;
+      return previousPage >= firstPage ? firstPage : undefined;
+    },
+    nextPage() {
+      const nextPage = this.currentPage + 1;
+      const maxPage = Math.ceil(this.jobs.length / 10);
+      return nextPage <= maxPage ? nextPage : undefined;
+    },
+    displayedJobs() {
+      const pageNumber = this.currentPage;
+      const firstJobIndex = (pageNumber - 1) * 10;
+      const lastJobIndex = pageNumber * 10;
+      return this.jobs.slice(firstJobIndex, lastJobIndex);
+    },
+    ...mapState(['jobs']),
+  },
+  async mounted() {
+    this.FETCH_JOBS();
+    // this.$store.dispatch(FETCH_JOBS)
+  },
+  methods: {
+    ...mapActions([FETCH_JOBS]),
+  },
 };
 </script>

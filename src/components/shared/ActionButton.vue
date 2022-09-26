@@ -5,10 +5,7 @@
 <script>
   export default {
     name: "ActionButton",
-    // props: ["text", "type"],
     props: {
-      // "text", 
-      // "type"
       text: {
         type: String,
         required: true
